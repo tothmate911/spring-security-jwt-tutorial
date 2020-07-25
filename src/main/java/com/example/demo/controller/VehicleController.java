@@ -29,12 +29,12 @@ public class VehicleController {
     public ResponseEntity save(@RequestBody VehicleForm form, HttpServletRequest request) {
         Vehicle saved = vehicles.save(Vehicle.builder().name(form.getName()).build());
         return ResponseEntity.created(
-            ServletUriComponentsBuilder
-                .fromContextPath(request)
-                .path("/v1/vehicles/{id}")
-                .buildAndExpand(saved.getId())
-                .toUri())
-            .build();
+                ServletUriComponentsBuilder
+                        .fromContextPath(request)
+                        .path("/v1/vehicles/{id}")
+                        .buildAndExpand(saved.getId())
+                        .toUri())
+                .build();
     }
 
     @GetMapping("/{id}")
