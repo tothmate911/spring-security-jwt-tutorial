@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserinfoController {
 
     @GetMapping("/me")
-    public String currentUser(){
+    public String currentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        VehicleAppUser user = (VehicleAppUser) authentication.getPrincipal();
-        return user.getUsername() + "\n" + user.getRoles();
+
+//        VehicleAppUser user = (VehicleAppUser) authentication.getPrincipal();
+//        return user.getUsername() + "\n" + user.getRoles();
+
+        return authentication.getPrincipal() + "\n" + authentication.getAuthorities().toString();
     }
 }
