@@ -37,18 +37,18 @@ public class DataInitializer implements CommandLineRunner {
         log.debug("printing all vehicles...");
         vehicles.findAll().forEach(v -> log.debug(" Vehicle :" + v.toString()));
 
-        users.saveAndFlush(VehicleAppUser.builder()
+        users.save(VehicleAppUser.builder()
                 .username("user")
                 .password(passwordEncoder.encode("password"))
                 .roles(Arrays.asList("ROLE_USER"))
                 .build()
         );
 
-        users.saveAndFlush(VehicleAppUser.builder()
-            .username("admin")
-            .password(passwordEncoder.encode("password"))
-            .roles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"))
-            .build()
+        users.save(VehicleAppUser.builder()
+                .username("admin")
+                .password(passwordEncoder.encode("password"))
+                .roles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"))
+                .build()
         );
         log.debug("printing all users...");
         users.findAll().forEach(v -> log.debug(" VehicleAppUser :" + v.toString()));
